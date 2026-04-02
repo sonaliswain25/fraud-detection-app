@@ -69,25 +69,6 @@ if st.button("Predict"):
 
         except:
             st.warning("Feature importance not available")
-    #ROC Curve
-    st.subheader("ROC Curve")
-    try:
-        y_proba = model.predict_proba(x_test)[:, 1]
-        fpr, tpr, _ = roc_curve(y_test, y_proba)
-        roc_auc = auc(fpr, tpr)
-
-        fig, ax = plt.subplots()
-        ax.plot(fpr, tpr, label=f"AUC = {roc_auc:.4f}")
-        ax.plot([0, 1], [0, 1])
-        ax.set_xlabel("False Positive Rate")
-        ax.set_ylabel("True Positive Rate")
-        ax.set_title("ROC Curve")
-        ax.legend()
-
-        st.pyplot(fig)
-
-    except:
-        st.warning("ROC Curve not available")
     
 
 
